@@ -1,0 +1,36 @@
+
+ALGORITHM algo
+VAR
+ set1 : ARRAY_OF INTEGER[n];
+ set2: ARRAY_OF INTEGER[m];
+ set: ARRAY_OF INTEGER[n+m];
+ i,j,k,l:INTEGER
+ s_c,s_f:INTEGER:=0
+ check:BOOLEAN
+BEGIN
+    read(n)
+    FOR i FROM 0 TO n-1  DO
+       read(set1[i])
+    END_FOR
+    read(m)
+    FOR i FROM 0 TO m-1  DO
+       read(set2[i])
+    END_FOR
+    set =concat(set1,set2)
+FOR k FROM 0 TO set.length-1 DO
+ check:=false
+   FOR l FROM 0 TO set.length-1 DO
+   IF(set[k]=set[l] AND k<>l) THEN
+   s_c=s_c+set[k]
+    check:=true
+   break;
+   END_IF
+   END_FOR
+ IF (check=false) THEN
+    s_f=s_f+set[k]
+ END_IF
+
+END_FOR
+ write("somme communs",s_c)
+  write("somme differents",s_f)
+END
